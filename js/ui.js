@@ -6,12 +6,13 @@ const ui = {
 
     try {
       const pensamentos = await api.buscarPensamentos();
+      listaPensamentos.innerHTML = "";
       pensamentos.forEach((pensamento) => {
         listaPensamentos.innerHTML += `
  <li class="li-pensamento" data-id="${pensamento.id}">
  <img src="assets/imagens/aspas-azuis.png" alt="Aspas Azuis" class="icone-aspas">
  <div class="pensamento-conteudo">${pensamento.conteudo}</div>    
- <div class="pensamento-autoria">${pensamento.autor}</div>      
+ <div class="pensamento-autoria">${pensamento.autoria}</div>      
  </li>
  `;
       });
@@ -20,7 +21,5 @@ const ui = {
     }
   },
 };
-
-ui.renderPensamentos();
 
 export default ui;
