@@ -1,4 +1,5 @@
-import ui from "./ui.js";
+import ui from "./ui.js"
+
 document.addEventListener("DOMContentLoaded", () => {
-  ui.renderPensamentos();
-});
+  ui.renderizarPensamentos()
+})

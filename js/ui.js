@@ -1,25 +1,25 @@
-import api from "./api.js";
+import api from "./api.js"
 
 const ui = {
-  async renderPensamentos() {
-    const listaPensamentos = document.getElementById("lista-pensamentos");
+  async renderizarPensamentos() {
+    const listaPensamentos = document.getElementById("lista-pensamentos")
 
     try {
-      const pensamentos = await api.buscarPensamentos();
-      listaPensamentos.innerHTML = "";
-      pensamentos.forEach((pensamento) => {
+      const pensamentos = await api.buscarPensamentos()
+      pensamentos.forEach(pensamento => {
         listaPensamentos.innerHTML += `
- <li class="li-pensamento" data-id="${pensamento.id}">
- <img src="assets/imagens/aspas-azuis.png" alt="Aspas Azuis" class="icone-aspas">
- <div class="pensamento-conteudo">${pensamento.conteudo}</div>    
- <div class="pensamento-autoria">${pensamento.autoria}</div>      
- </li>
- `;
-      });
-    } catch {
-      alert("Erro ao buscar pensamentos.");
+          <li class="li-pensamento" data-id="${pensamento.id}">
+          <img src="assets/imagens/aspas-azuis.png" alt="Aspas azuis" class="icone-aspas">
+          <div class="pensamento-conteudo">${pensamento.conteudo}</div>
+          <div class="pensamento-autoria">${pensamento.autoria}</div>
+          </li>
+        `
+      })
     }
-  },
-};
+    catch {
+      alert('Erro ao renderizar pensamentos')
+    }
+  }
+}
 
-export default ui;
+export default ui
