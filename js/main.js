@@ -1,30 +1,31 @@
-import ui from "./ui.js";
-import api from "./api.js";
+import ui from "./ui.js"
+import api from "./api.js"
 
 document.addEventListener("DOMContentLoaded", () => {
-  const formularioPensamento = document.getElementById("pensamento-form");
+  ui.renderizarPensamentos()
 
-  if (formularioPensamento) {
-    formularioPensamento.addEventListener(
-      "submit",
-      manipularSubmissaoFormulario,
-    );
+  const formularioPensamento = document.getElementById("pensamento-form")
+  const botaoCancelar = document.getElementById("botao-cancelar")
+
+  formularioPensamento.addEventListener("submit", manipularSubmissaoFormulario)
+  botaoCancelar.addEventListener("click", manipularCancelamento)
+})
+
+async function manipularSubmissaoFormulario(event) {
+  event.preventDefault()
+  const id = document.getElementById("pensamento-id").value
+  const conteudo = document.getElementById("pensamento-conteudo").value
+  const autoria = document.getElementById("pensamento-autoria").value
+
+  try{ 
+    await api.salvarPensamento({ conteudo, autoria })
+    ui.renderizarPensamentos()
   }
-
-  ui.renderizarPensamentos();
-});
-
-async function manipularSubmissaoFormulario(evento) {
-  evento.preventDefault();
-
-  const id = document.getElementById("pensamento-id").value;
-  const conteudo = document.getElementById("pensamento-conteudo").value;
-  const autoria = document.getElementById("pensamento-autoria").value;
-
-  try {
-    await api.salvarPensamentos({ conteudo, autoria });
-    ui.renderizarPensamentos();
-  } catch {
-    alert("Erro ao salvar pensamento");
+  catch {
+    alert("Erro ao salvar pensamento")
   }
+}
+
+function manipularCancelamento() {
+  ui.limparFormulario()
 }
