@@ -74,6 +74,16 @@
       "conteudo": "show",
       "autoria": "Dev",
       "id": "tBMoyVVhzS4"
+    },
+    {
+      "conteudo": "teste",
+      "autoria": "teste",
+      "id": "8dBkxQPV5SY"
+    },
+    {
+      "conteudo": "Na minha máquina funciona!",
+      "autoria": "Devs",
+      "id": "5G1pM6wDVcY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
